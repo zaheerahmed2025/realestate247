@@ -6,7 +6,7 @@ const basePath = isGithubPages ? "/realestate247" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: basePath || undefined,
+  basePath: basePath,
   assetPrefix: basePath ? `${basePath}/` : undefined,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
