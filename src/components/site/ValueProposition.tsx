@@ -1,5 +1,6 @@
 import { Check, TrendingDown } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { getAssetUrl } from "@/lib/utils";
 
 const BENEFITS = [
   "No marketing costs — we source the deals for you",
@@ -58,7 +59,7 @@ export function ValueProposition() {
             <div className="relative">
               <div className="relative rounded-[16px] overflow-hidden shadow-card aspect-[4/3] bg-[#f5f8fb]">
                 <img
-                  src="/images/value-prop.png"
+                  src={getAssetUrl("/images/value-prop.png")}
                   alt="Real estate investors closing a below-market deal"
                   className="h-full w-full object-cover"
                   loading="lazy"

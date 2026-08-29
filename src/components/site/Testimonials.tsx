@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { RevealGroup, itemVariants } from "./Reveal";
+import { getAssetUrl } from "@/lib/utils";
 
 const TESTIMONIALS = [
   {
@@ -69,7 +70,7 @@ export function Testimonials() {
               <figcaption className="mt-5 flex items-center gap-3">
                 <span className="h-10 w-10 rounded-full overflow-hidden bg-[#f5f8fb] shrink-0">
                   <img
-                    src={`/images/${t.avatar}.png`}
+                    src={getAssetUrl(`/images/${t.avatar}.png`)}
                     alt={`Portrait of ${t.name}`}
                     className="h-full w-full object-cover"
                     loading="lazy"

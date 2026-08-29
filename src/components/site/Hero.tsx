@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Flame, Phone, MapPin, TrendingDown, ArrowRight, Star } from "lucide-react";
 
+import { getAssetUrl } from "@/lib/utils";
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
@@ -16,7 +18,7 @@ export function Hero() {
       {/* Photo overlay */}
       <div
         className="absolute inset-0 opacity-[0.15] bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-property.png')" }}
+        style={{ backgroundImage: `url('${getAssetUrl("/images/hero-property.png")}')` }}
         aria-hidden
       />
       {/* Navy gradient to keep contrast */}
@@ -114,7 +116,7 @@ export function Hero() {
                     className="h-9 w-9 rounded-full ring-2 ring-[#0b1f3a] overflow-hidden bg-white/10"
                   >
                     <img
-                      src={`/images/${a}.png`}
+                      src={getAssetUrl(`/images/${a}.png`)}
                       alt=""
                       className="h-full w-full object-cover"
                       loading="lazy"
@@ -166,7 +168,7 @@ export function Hero() {
 
               <div className="relative h-44 bg-[#f5f8fb] overflow-hidden">
                 <img
-                  src="/images/deal-home.png"
+                  src={getAssetUrl("/images/deal-home.png")}
                   alt="Sample off-market deal property"
                   className="h-full w-full object-cover"
                   loading="lazy"
