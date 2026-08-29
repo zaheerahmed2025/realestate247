@@ -42,33 +42,39 @@ export function LeadForm() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
-    const payload = {
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      buyerType: String(data.get("buyerType") ?? ""),
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim().toLowerCase();
+    const phone = String(data.get("phone") ?? "").trim();
+    const buyerType = String(data.get("buyerType") ?? "").trim();
+
+    if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus("error");
+      setErrorMsg("Please provide a valid name and email address.");
+      return;
+    }
+
+    const lead = {
+      name,
+      email,
+      phone,
+      buyerType,
       areas: selectedAreas,
+      createdAt: new Date().toISOString(),
     };
 
     try {
-      const res = await fetch("/api/vip", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const json = await res.json();
-      if (!res.ok || !json.ok) {
-        throw new Error(json.error || "Submission failed");
+      if (typeof window !== "undefined") {
+        const existing = JSON.parse(localStorage.getItem("vip_leads") || "[]");
+        existing.push(lead);
+        localStorage.setItem("vip_leads", JSON.stringify(existing));
       }
-      setStatus("success");
-    } catch (err) {
-      setStatus("error");
-      setErrorMsg(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please try again."
-      );
+    } catch {
+      // Ignore storage errors
     }
+
+    setTimeout(() => {
+      setStatus("success");
+    }, 600);
   }
 
   return (

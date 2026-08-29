@@ -74,16 +74,24 @@ A modern, high-converting, performance-focused real estate landing page and VIP 
    ```
    Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## 🌐 GitHub Pages Deployment
+
+This repository includes an automated GitHub Actions workflow (`.github/workflows/deploy.yml`) to deploy the Next.js website directly to GitHub Pages.
+
+To enable live website hosting:
+1. Open your repository on GitHub: **[zaheerahmed2025/realestate247](https://github.com/zaheerahmed2025/realestate247)**
+2. Go to **Settings** -> **Pages**.
+3. Under **Build and deployment** -> **Source**, select **GitHub Actions**.
+4. The site will automatically build and publish to `https://zaheerahmed2025.github.io/realestate247/`!
+
 ---
 
 ## 🛠 Available Scripts
 
 - `npm run dev` — Starts local development server
-- `npm run build` — Generates Prisma client and compiles production build
-- `npm run start` — Starts production server
+- `npm run build` — Compiles static production build
+- `npm run start` — Starts local production server
 - `npm run lint` — Runs ESLint code check
-- `npm run db:push` — Syncs Prisma schema with database
-- `npm run db:generate` — Generates Prisma client types
 
 ---
 
